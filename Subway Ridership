@@ -1,0 +1,31 @@
+/* partitioning two years */
+ link: https://console.cloud.google.com/bigquery?sq=114977826286:4f20fad634ae4eae9598955f776c6cff
+ 
+ SELECT  
+station_name, ridership_2013,ridership_2014,
+ridership_2014-ridership_2013 AS change_2014_raw
+
+FROM `bigquery-public-data.new_york_subway.subway_ridership_2013_present` 
+
+
+
+
+/* average rider ship */
+
+link https://console.cloud.google.com/bigquery?sq=114977826286:01e096ccb7774475aab201d775ccab07
+
+SELECT  
+station_name, ridership_2013, ridership_2014, ridership_2015,ridership_2016,
+ridership_2013 + ridership_2014 + ridership_2015 + ridership_2016/4 AS average
+
+FROM `bigquery-public-data.new_york_subway.subway_ridership_2013_present` 
+
+
+/* creating average for year 2016,2017,2018 */
+link: https://console.cloud.google.com/bigquery?sq=114977826286:5e0f777850034d03b99db05842a00429
+
+SELECT  
+station_name, ridership_2016, ridership_2017, ridership_2018,
+ridership_2016 + ridership_2017 + ridership_2018/4 AS average
+
+FROM `bigquery-public-data.new_york_subway.subway_ridership_2013_present` 
