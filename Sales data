@@ -1,0 +1,18 @@
+/* */
+link: https://console.cloud.google.com/bigquery?sq=114977826286:0ee31e04a7d74243a19754c0e1ee072b
+
+SELECT 
+  EXTRACT(YEAR FROM date) AS Year,
+  EXTRACT(MONTH FROM date) AS Month,
+  ProductId,
+  ROUND(MAX(UnitPrice),2) AS UnitPrice,
+  SUM(Quantity) AS UnitsSold
+    FROM `my-project-c4-w3.sales11.sales`
+    GROUP BY
+  Year,
+  Month,
+  ProductId
+ORDER BY
+  Year,
+  Month,
+  ProductId;
