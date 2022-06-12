@@ -1,0 +1,19 @@
+https://console.cloud.google.com/bigquery?sq=114977826286:ec271a079a264951a950a3981cd7a901
+
+
+/* Exploring wikipedia project */
+
+SELECT
+  language,
+  title,
+  SUM(views) AS views
+FROM
+  `bigquery-samples.wikipedia_benchmark.Wiki10B`
+WHERE
+  title LIKE '%Google%'
+GROUP BY
+  language,
+  title
+ORDER BY
+  views DESC;
+
