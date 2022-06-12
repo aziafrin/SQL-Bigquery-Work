@@ -50,4 +50,14 @@ FROM `bigquery-public-data.new_york_citibike.citibike_stations`
 
 
 
-/* 
+/* Extracting year from starting time */
+
+link: https://console.cloud.google.com/bigquery?sq=114977826286:e2ef1ab40cd741adb33f0182e56854d4
+
+SELECT 
+EXTRACT (YEAR FROM starttime) AS YEAR,
+COUNT(*) AS number_of_rides
+ FROM `bigquery-public-data.new_york_citibike.citibike_trips` 
+ GROUP BY YEAR
+ ORDER BY YEAR DESC 
+ 
