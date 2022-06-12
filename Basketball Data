@@ -1,0 +1,20 @@
+Query link: https://console.cloud.google.com/bigquery?sq=114977826286:700988d400c94c8e9cc2a9ebbf64b128
+
+SELECT
+ seasons.market AS university,
+ seasons.name AS team_name,
+ seasons.wins,
+ seasons.losses,
+ seasons.ties,
+ mascots.mascot AS team_mascot
+FROM
+ `bigquery-public-data.ncaa_basketball.mbb_historical_teams_seasons` AS seasons
+INNER JOIN 
+ `bigquery-public-data.ncaa_basketball.mascots` AS mascots
+ON
+ seasons.team_id = mascots.id
+WHERE
+ seasons.season = 1984
+ AND seasons.division = 1
+ORDER BY
+ seasons.market
