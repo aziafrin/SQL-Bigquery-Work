@@ -1,0 +1,37 @@
+Link: https://console.cloud.google.com/bigquery?sq=114977826286:754ab51fc0574d1cac2331301fa0781e
+
+SELECT 
+Date, 
+Region,
+Small_Bags,
+Large_Bags,
+XLarge_Bags,
+Total_Bags,
+Small_Bags+Large_Bags+XLarge_Bags As Total_bags_cal
+FROM `my-project-c4-w3.avocado_data.avocado_prices1` LIMIT 1000
+
+
+/* Creating small bag percentages */
+
+Link: https://console.cloud.google.com/bigquery?sq=114977826286:579aa17824a94769971acf3f4f343b76
+SELECT 
+Date, 
+Region,
+Small_Bags,
+Total_Bags,
+Small_Bags/ Total_Bags*100 As Small_Bags_percentage
+FROM `my-project-c4-w3.avocado_data.avocado_prices1` LIMIT 1000
+
+
+/* With condition */
+
+link: https://console.cloud.google.com/bigquery?sq=114977826286:978adc8711fd4eb1a7d0867eee03fce2
+
+SELECT 
+Date, 
+Region,
+Small_Bags,
+Total_Bags,
+Small_Bags/ Total_Bags*100 As Small_Bags_percentage
+FROM `my-project-c4-w3.avocado_data.avocado_prices1` 
+Where Total_Bags <> 0
