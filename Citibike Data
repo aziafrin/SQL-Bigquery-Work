@@ -34,3 +34,20 @@ FROM `bigquery-public-data.new_york_citibike.citibike_trips`
 group by start_station_name,end_station_name,usertype
 order by Num_trips desc 
 LIMIT 10
+
+
+/* See the available bike */
+
+link: https://console.cloud.google.com/bigquery?sq=114977826286:7770e2b110414402b4615b8a367c98a5
+
+SELECT 
+  station_id,
+  num_bikes_available,
+ (SELECT 
+    AVG(num_bikes_available)
+  FROM `bigquery-public-data.new_york_citibike.citibike_stations` AS avg_num_bikes_available)
+FROM `bigquery-public-data.new_york_citibike.citibike_stations`
+
+
+
+/* 
