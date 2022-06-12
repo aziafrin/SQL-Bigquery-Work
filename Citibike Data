@@ -61,3 +61,37 @@ COUNT(*) AS number_of_rides
  GROUP BY YEAR
  ORDER BY YEAR DESC 
  
+ 
+ 
+ 
+ /* average trip duration */
+ 
+ link: https://console.cloud.google.com/bigquery?sq=114977826286:44f963e2576543dd801f678e1143a776
+ 
+ With 
+     longest_used_bike  AS(   
+           Select
+                bikeid, 
+                sum(duration_minutes) AS trip_duration
+           FROM 
+               `bigquery-public-data.austin_bikeshare.bikeshare_trips` 
+           group by 
+                bikeid
+           order by 
+                trip_duration desc
+    )
+  ##
+  select
+       trips.start_station_id,
+        COUNT(*) AS trip_ct
+  from 
+       longest_used_bike AS longest
+       full join 
+       `bigquery-public-data.austin_bikeshare.bikeshare_trips` as trips
+       ON longest.bikeid = trips.bikeid
+       GROUP BY
+       trips.start_station_id
+       order by 
+       trip_ct DESC
+
+       LIMIT 1
